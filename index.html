@@ -18,6 +18,7 @@
           justify-content: center;
           align-items: center;
         }
+       
     </style>
     <script src=
 "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
@@ -29,8 +30,29 @@
         <h1>QR Code for Tree</h1>
     </header>
     <main>
-        <input type="button" value="Generate QR" onclick="getQR()">
+        <input type="button" style="display:none" value="Generate QR" onclick="getQR()">
         <div id="qrcode"></div>
+        <div id="showDiv" style="display: flex;flex-direction: column; display: none;">
+        <div style="display: flex;flex-direction: row;">
+            <div>Tree Name: </div>
+            <div id="treeName"></div>
+        </div>
+
+        <div style="display: flex;flex-direction: row;">
+            <div>Tree Age: </div>
+            <div id="treeAge"></div>
+        </div>
+
+        <div style="display: flex;flex-direction: row;">
+            <div>Tree Location: </div>
+            <div id="treeLocation"></div>
+        </div>
+
+        <div style="display: flex;flex-direction: row;">
+            <div>Botanical Name: </div>
+            <div id="treeBotName"></div>
+        </div>
+        </div>
     </main>
     
     <script>
@@ -49,10 +71,10 @@
         const treeString = JSON.stringify(treeObject);
         console.log(treeString);
         var qrcode = new QRCode("qrcode",
-        "https://www.magicalumbrella.com/tree?treeId=1");
+        "https://mayurthewebdeveloper.github.io/TreeQR/?treeId=1");
     
     //const urlParams = new URLSearchParams(window.location.search);
-    const staticUrl = 'https://www.magicalumbrella.com/tree?treeId=1';
+    const staticUrl = 'https://mayurthewebdeveloper.github.io/TreeQR/?treeId=1';
 
 // Create a URL object
 const url = new URL(staticUrl);
@@ -64,7 +86,11 @@ console.log(treeId);
 
         if(treeId == 1)
         {
-            console.log(treeObject);
+            document.getElementById("treeName").innerHTML = treeObject.Name;
+            document.getElementById("treeAge").innerHTML = treeObject.Age;
+            document.getElementById("treeLocation").innerHTML = treeObject.Location;
+            document.getElementById("treeBotName").innerHTML = treeObject.BotanicalName;
+            document.getElementById("showDiv").style.display="block";
         }
 
     }
