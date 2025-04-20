@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" 
+         content="width=device-width, 
+                        initial-scale=1.0" />
+    <title>QR Code Generator</title>
+   
+    <style>
+        h1, h3 {
+          color: green;
+        }
+        body, header {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+    </style>
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>QR Code for Tree</h1>
+    </header>
+    <main>
+        <input type="button" value="Generate QR" onclick="getQR()">
+        <div id="qrcode"></div>
+    </main>
+    
+    <script>
+        function getQR()
+        {
+
+       
+        let treeObject = {
+            id : 1,
+            Name : "Mango Tree",
+            Age : 2,
+            Location : "Chandrapur",
+            BotanicalName : "Magnifera Indica" 
+        }
+        
+        const treeString = JSON.stringify(treeObject);
+        console.log(treeString);
+        var qrcode = new QRCode("qrcode",
+        "https://www.magicalumbrella.com/tree?treeId=1");
+    
+    //const urlParams = new URLSearchParams(window.location.search);
+    const staticUrl = 'https://www.magicalumbrella.com/tree?treeId=1';
+
+// Create a URL object
+const url = new URL(staticUrl);
+
+// Use URLSearchParams to get the query parameter
+const treeId = url.searchParams.get('treeId');
+
+console.log(treeId);
+
+        if(treeId == 1)
+        {
+            console.log(treeObject);
+        }
+
+    }
+    </script>
+</body>
+
+</html>
