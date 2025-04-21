@@ -27,10 +27,10 @@
 
 <body>
     <header>
-        <h1>QR Code for Tree</h1>
+        <h1>QR Code for Image</h1>
     </header>
     <main>
-        <input type="button" value="Generate QR" style="display: none;" onclick="getQR()">
+        <input type="button" value="Generate QR" style="display:none;" onclick="getQR()">
         <div id="qrcode" style="margin-top: 5%;"></div>
         <div id="showDiv" style="display: flex;flex-direction: column; display: none;margin-top: 5%;">
         <div style="display: flex;flex-direction: row;">
@@ -53,6 +53,16 @@
             <div id="treeBotName"></div>
         </div>
         </div>
+        <div style="display:flex;justify-content: space-between;margin-top:5%">
+            <div>
+                <img src="/Image1.jpeg" alt="treeImage1" height="400px" width="400px">
+            </div>
+            
+            <div>
+                <img src="/Image2.jpeg" alt="treeImage2" height="400px" width="400px">
+            </div>
+            
+        </div>
     </main>
     
     <script>
@@ -71,14 +81,14 @@
       
         const treeString = JSON.stringify(treeObject);
         console.log(treeString);
-        var qrcode = new QRCode("qrcode",
-        "https://mayurthewebdeveloper.github.io/TreeQR/?treeId=1");
+       // var qrcode = new QRCode("qrcode", "https://mayurthewebdeveloper.github.io/TreeQR/?treeId=1");
+        var qrcode = new QRCode("qrcode", "https://mayurthewebdeveloper.github.io/TreeQR");
 
     }
     
     //const urlParams = new URLSearchParams(window.location.search);
-    const staticUrl = 'https://mayurthewebdeveloper.github.io/TreeQR/?treeId=1';
-
+   // const staticUrl = 'https://mayurthewebdeveloper.github.io/TreeQR/?treeId=1';
+   const staticUrl = 'https://mayurthewebdeveloper.github.io/TreeQR';
 // Create a URL object
 const url = new URL(staticUrl);
 
@@ -93,7 +103,7 @@ const treeId = url.searchParams.get('treeId');
             document.getElementById("treeBotName").innerHTML = treeObject.BotanicalName;
             document.getElementById("showDiv").style.display="block";
         }
-
+       
    
     </script>
 </body>
