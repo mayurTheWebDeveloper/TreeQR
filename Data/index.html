@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" 
+         content="width=device-width, 
+                        initial-scale=1.0" />
+    <title>QR Code Generator</title>
+   
+    <style>
+        h1, h3 {
+          color: green;
+        }
+        body, header {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+       
+    </style>
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1 id="HeadingQR">QR Code for Image</h1>
+    </header>
+    <main>
+        <input type="button" value="Generate QR" style="display:none;" onclick="getQR()">
+        <div id="qrcode" style="margin-top: 5%;"></div>
+        <div id="showDiv" style="display: flex;flex-direction: column; display: none;margin-top: 5%;">
+        <div style="display: flex;flex-direction: row;">
+            <div>Tree Name: </div>
+            <div id="treeName"></div>
+        </div>
+
+        <div style="display: flex;flex-direction: row;">
+            <div>Tree Age: </div>
+            <div id="treeAge"></div>
+        </div>
+
+        <div style="display: flex;flex-direction: row;">
+            <div>Tree Location: </div>
+            <div id="treeLocation"></div>
+        </div>
+
+        <div style="display: flex;flex-direction: row;">
+            <div>Botanical Name: </div>
+            <div id="treeBotName"></div>
+        </div>
+        </div>
+    </main>
+    
+    <script>
+          let treeObject = {
+            id : 1,
+            Name : "Mango Tree",
+            Age : 2,
+            Location : "Chandrapur",
+            BotanicalName : "Magnifera Indica" 
+        }
+        
+        function getQR()
+        {
+
+       
+      
+        const treeString = JSON.stringify(treeObject);
+        
+       var qrcode = new QRCode("qrcode", "https://mayurthewebdeveloper.github.io/TreeQR/?treeId=1");
+        //var qrcode = new QRCode("qrcode", "https://mayurthewebdeveloper.github.io/TreeQR");
+
+    }
+    
+
+   // const staticUrl = 'https://mayurthewebdeveloper.github.io/TreeQR/?treeId=1';
+   
+    const staticUrl = 'https://mayurthewebdeveloper.github.io/TreeQR/';
+
+   
+// Create a URL object
+const url = new URL(staticUrl);
+
+// Use URLSearchParams to get the query parameter
+const treeId = url.searchParams.get('treeId');
+
+        if(treeId == 1)
+        {
+            document.getElementById("treeName").innerHTML = treeObject.Name;
+            document.getElementById("treeAge").innerHTML = treeObject.Age;
+            document.getElementById("treeLocation").innerHTML = treeObject.Location;
+            document.getElementById("treeBotName").innerHTML = treeObject.BotanicalName;
+            document.getElementById("showDiv").style.display="block";
+        }
+       
+   
+    </script>
+</body>
+
+</html>
