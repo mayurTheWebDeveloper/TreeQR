@@ -27,7 +27,7 @@
 
 <body>
     <header>
-        <h1>QR Code for Image</h1>
+        <h1 id="HeadingQR">QR Code for Image</h1>
     </header>
     <main>
         <input type="button" value="Generate QR" style="display:none;" onclick="getQR()">
@@ -53,13 +53,13 @@
             <div id="treeBotName"></div>
         </div>
         </div>
-        <div style="display:flex;justify-content: space-between;flex-direction:column;margin-top:5%">
+        <div style="display:flex;justify-content: space-between;flex-direction: column;margin-top:5%">
             <div>
-                <img src="Images/Image1.jpeg" alt="treeImage1" height="300px" width="200px">
+                <img src="D:\Personal\projects\TreeQR\Image1.jpeg" alt="treeImage1" height="300px" width="200px">
             </div>
             
             <div>
-                <img src="Images/Image2.jpeg" alt="treeImage2" height="300px" width="200px">
+                <img src="D:\Personal\projects\TreeQR\Image2.jpeg" alt="treeImage2" height="300px" width="200px">
             </div>
             
         </div>
@@ -80,15 +80,24 @@
        
       
         const treeString = JSON.stringify(treeObject);
-        console.log(treeString);
-       // var qrcode = new QRCode("qrcode", "https://mayurthewebdeveloper.github.io/TreeQR/?treeId=1");
-        var qrcode = new QRCode("qrcode", "https://mayurthewebdeveloper.github.io/TreeQR");
+        
+       var qrcode = new QRCode("qrcode", "https://mayurthewebdeveloper.github.io/TreeQR/?treeId=1");
+        //var qrcode = new QRCode("qrcode", "https://mayurthewebdeveloper.github.io/TreeQR");
 
     }
     
-    //const urlParams = new URLSearchParams(window.location.search);
+
    // const staticUrl = 'https://mayurthewebdeveloper.github.io/TreeQR/?treeId=1';
-   const staticUrl = 'https://mayurthewebdeveloper.github.io/TreeQR';
+   if(document.getElementById("HeadingQR").innerHTML.includes("QR Code for Image"))
+   {
+    var staticUrl = 'https://mayurthewebdeveloper.github.io/TreeQR/';
+
+   }
+   else
+   {
+    var staticUrl = 'https://mayurthewebdeveloper.github.io/TreeQR/?treeId=1';
+   }
+   
 // Create a URL object
 const url = new URL(staticUrl);
 
